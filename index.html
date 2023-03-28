@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/outline.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/display.css">
+
+    <script src="node_modules/mathjs/lib/browser/math.js" defer></script>
+    <script src="js/DOM.js" defer></script>
+    <script src="js/functions.js" defer></script>
+    <script src="js/utilityFunctions.js" defer></script>
+    <script src="js/variables.js" defer></script>
+    <script src="js/putCursorInside.js" defer></script>
+
+    <script src="js/buttons/fractions.js" defer></script>
+    <script src="js/buttons/root.js" defer></script>
+    <script src="js/buttons/power.js" defer></script>
+    <script src="js/buttons/logarithm.js" defer></script>
+    <script src="js/buttons/trigonometry.js" defer></script>
+    <script src="js/buttons/enableOptions.js" defer></script>
+    <script src="js/buttons/inputByOptions.js" defer></script>
+
+    <script src="js/shift/factorial.js" defer></script>
+    <script src="js/shift/absolute.js" defer></script>
+    <script src="js/shift/derivative.js" defer></script>
+
+    <!-- NPM Files -->
+
+
+
+
+    <script src="js/main.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css"
+        rel="stylesheet" type="text/css" />
+
+    <title>Calculator Application</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="calculator">
+            <div class="header">
+                <div class="left">
+                    <h1>CASIO</h1>
+                    <h4>fx-991ES PLUS</h4>
+                    <h6>NATURAL - V.P.A.M.</h6>
+                </div>
+                <div class="right">
+                    <div class="solar">
+                        <div class="boxes"></div>
+                        <div class="boxes"></div>
+                        <div class="boxes"></div>
+                        <div class="boxes"></div>
+                    </div>
+                    <h6>TWO WAY POWER</h6>
+                </div>
+            </div>
+            <div class="display">
+                <div class="mode_specifier_section">
+                    <div class="mode_toggler">
+                        <div class="S_is_on hide" id="S_is_on">S</div>
+                        <div class="A_is_on hide" id="A_is_on">A</div>
+                        <div class="M_is_on hide" id="M_is_on">M</div>
+                    </div>
+                    <div class="mode">CMPLX</div>
+                    <div class="angle">D</div>
+                    <div class="line">Math</div>
+
+                </div>
+                <div class="question_section">
+                    <div class="cursor"></div>
+                </div>
+                <div class="answer_section">
+
+                </div>
+
+
+            </div>
+            <div class="system_controls">
+                <div class="left">
+                    <div class="top">
+                        <div class="btn btn_purple">
+                            <label for="shiftBtn"><span class="yellow"> SHIFT </span></label>
+                            <button id="shiftBtn"></button>
+                        </div>
+                        <div class="btn btn_purple">
+                            <label for="alpha"><span class="red">ALPHA</span></label>
+                            <button id="alphaBtn"></button>
+                            <link
+                                href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css"
+                                rel="stylesheet" type="text/css" />
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="btn btn_black">
+                            <label for="calc">
+                                <span class="yellow">SOLVE</span>
+                                <span class="red">=</span>
+                            </label>
+                            <button value="CALC" id="calc">CALC</button>
+                        </div>
+                        <div class="btn btn_black">
+                            <label for="integralBtn"><span class="yellow">d/dx</span> <span
+                                    class="red">:</span></label>
+                            <button value="integral" id="integralBtn">
+                                <i class="fa-solid fa-integral"></i>
+                                <sub>a</sub> <sup>b</sup>C
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="btn btn_replay">
+                        <button id="top"></button>
+                    </div>
+                    <div class="btn btn_replay">
+                        <button id="left"></button>
+                    </div>
+                    <div class="btn btn_replay">
+                        <button id="right"></button>
+                    </div>
+                    <div class="btn btn_replay">
+                        <button id="bottom"></button>
+                    </div>
+                    <div class="text">
+                        REPLAY
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <div class="btn btn_purple">
+                            <label for="mode">MODE</label>
+                            <button id="mode"></button>
+                        </div>
+                        <div class="btn btn_purple">
+                            <label for="on">ON</label>
+                            <button id="on"></button>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="btn btn_black">
+                            <label for="reciprocal"><span class="yellow">x!</span></label>
+                            <button value="reciprocal" id="reciprocal">x <sup>-1</sup></button>
+                        </div>
+                        <div class="btn btn_black">
+                            <label for="log"><span class="yellow">d/dx</span> <span
+                                    class="red">:</span></label>
+                            <button value="log" id="log">log<sub>a</sub>b</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="black_buttons">
+                <div class="row row1">
+                    <div class="btn btn_black">
+                        <label for="fractional_divide"><span class="yellow">x!</span></label>
+                        <button value="fractional_divide" id="fractional_divide">
+                            a/b
+                        </button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="sqrt"><span class="yellow"><sup>3</sup><i
+                                    class="fa-solid fa-square-root-variable"></i></span></label>
+                        <button value="sqrt" id="sqrt"><i
+                                class="fa-solid fa-square-root-variable"></i></button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="square"><span class="yellow">x<sup>3</sup></span></label>
+                        <button value="square" id="square">x <sup>2</sup></button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="powerBtn"><span class="yellow"><sup>x</sup><i
+                                    class="fa-thin fa-square-root"></i>y</span></label>
+                        <button value="power" id="powerBtn">x <sup>y</sup></button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="common_log"><span class="yellow">10<sup>x</sup></span></label>
+                        <button value="common_log" id="common_log">log</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="natural_log"><span class="yellow">e<sup>x</sup></span></label>
+                        <button value="natural_log" id="natural_log">ln</button>
+                    </div>
+                </div>
+                <div class="row row2">
+                    <div class="btn btn_black">
+                        <label for="negate"><span class="yellow">.</span><span class="red">A</span></label>
+                        <button value="negate" id="negate">-</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="sexagesimal"><span class="yellow">&lt;--</span><span
+                                class="red">B</span></label>
+                        <button value="sexagesimal" id="sexagesimal">° , ,,</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="hyp"><span class="yellow">Abs</span><span class="red">C</span></label>
+                        <button value="hyp" id="hyp">hyp</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="sin"><span class="yellow">sin<sup>-1</sup></span><span
+                                class="red">D</span></label>
+                        <button value="sin" id="sin">sin</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="cos"><span class="yellow">cos<sup>-1</sup></span><span
+                                class="red">E</span></label>
+                        <button value="cos" id="cos">cos</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="tan"><span class="yellow">tan<sup>-1</sup></span><span
+                                class="red">F</span></label>
+                        <button value="tan" id="tan">tan</button>
+                    </div>
+                </div>
+                <div class="row row3">
+                    <div class="btn btn_black">
+                        <label for="rcl"><span class="yellow">STO</span></label>
+                        <button value="rcl" id="rcl">RCL</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="ENG"><span class="yellow">&lt;--</span></label>
+                        <button value="ENG" id="ENG">ENG</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="open_braces"><span class="yellow">%</span></label>
+                        <button value="open_braces" id="open_braces">(</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="close_braces"><span class="yellow">,</span><span
+                                class="red">X</span></label>
+                        <button value="close_braces" id="close_braces">)</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="fratodec"><span class="yellow">ab/c</span><span
+                                class="red">Y</span></label>
+                        <button value="fratodec" id="fratodec">S&lt;=&gt;D</button>
+                    </div>
+                    <div class="btn btn_black">
+                        <label for="m+"><span class="yellow">M-</span><span class="red">M</span></label>
+                        <button value="m+" id="m+">M+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="row row1">
+                    <div class="btn btn_calc">
+                        <label for="seven"><span class="yellow">CONST</span></label>
+                        <button value="seven" id="seven">7</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="eight"><span class="yellow">CONV</span></label>
+                        <button value="eight" id="eight">8</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="nine"><span class="yellow">CLR</span></label>
+                        <button value="nine" id="nine">9</button>
+                    </div>
+                    <div class="btn btn_calc orange">
+                        <label for="DEL"><span class="yellow">INS</span></label>
+                        <button value="DEL" id="DEL">DEL</button>
+                    </div>
+                    <div class="btn btn_calc orange">
+                        <label for="AC"><span class="yellow">OFF</span></label>
+                        <button value="AC" id="AC">AC</button>
+                    </div>
+                </div>
+                <div class="row row2">
+                    <div class="btn btn_calc">
+                        <label for="four"><span class="yellow">[MATRIX]</span></label>
+                        <button value="four" id="four">4</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="five"><span class="yellow">[VECTOR]</span></label>
+                        <button value="five" id="five">5</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="six"><span class="yellow"> .</span></label>
+                        <button value="six" id="six">6</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="multiply"><span class="yellow">nPr</span></label>
+                        <button value="multiply" id="multiply">*</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="divide"><span class="yellow">nCr</span></label>
+                        <button value="divide" id="divide">divide</button>
+                    </div>
+                </div>
+                <div class="row row3">
+                    <div class="btn btn_calc">
+                        <label for="one"><span class="yellow">[STAT]]</span></label>
+                        <button value="one" id="one">1</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="two"><span class="yellow">[CMPLX]</span></label>
+                        <button value="two" id="two">2</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="three"><span class="yellow">[BASE]</span></label>
+                        <button value="three" id="three">3</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="add"><span class="yellow">Pol</span></label>
+                        <button value="add" id="add">+</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="subtract"><span class="yellow">Rec</span></label>
+                        <button value="subtract" id="subtract">-</button>
+                    </div>
+                </div>
+                <div class="row row4">
+                    <div class="btn btn_calc">
+                        <label for="zero"><span class="yellow">Rnd</span></label>
+                        <button value="zero" id="zero">0</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="decimal"><span class="yellow">Ran#</span><span
+                                class="red">RanInt</span></label>
+                        <button value="decimal" id="decimal">.</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="power10"><span class="yellow">pi</span><span class="red">e</span></label>
+                        <button value="power10" id="power10">x10<sup>x</sup></button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="answer"><span class="yellow">DRG-></span></label>
+                        <button value="answer" id="answer">Ans</button>
+                    </div>
+                    <div class="btn btn_calc">
+                        <label for="equal"><span class="yellow">.</span></label>
+                        <button value="equal" id="equal"> =</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<!-- <div class="power_div" id="power_div${activePowerNumber}" data-power="${pow}">
+    <div class="base" id="base${activePowerNumber}">
+        <i class="fa-regular fa-square"></i>
+        ${cursorHTML}
+    </div>
+    <div>
+        <sup class="power" id="power${activePowerNumber}">12<i class="fa-regular fa-square"></i></sup>
+    </div>
+</div> -->
